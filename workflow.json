@@ -1,0 +1,132 @@
+{
+  "workflow": {
+    "nodes": [
+      {
+        "id": "input_node",
+        "type": "Input",
+        "label": "API Specification Input",
+        "nodeCategory": "input"
+      },
+      {
+        "id": "manager_agent",
+        "type": "Agent",
+        "label": "Integration Orchestrator",
+        "nodeCategory": "agent",
+        "agent_id": "6998dda44657541456743cb6"
+      },
+      {
+        "id": "code_gen_agent",
+        "type": "Agent",
+        "label": "Code Generation Agent",
+        "nodeCategory": "agent",
+        "agent_id": "6998dd787375d37e0e134d11"
+      },
+      {
+        "id": "security_agent",
+        "type": "Agent",
+        "label": "Error & Security Analyzer",
+        "nodeCategory": "agent",
+        "agent_id": "6998dd7847a42b7319aead91"
+      },
+      {
+        "id": "docs_agent",
+        "type": "Agent",
+        "label": "Documentation Agent",
+        "nodeCategory": "agent",
+        "agent_id": "6998dd796b8b4ea65c4928c6"
+      },
+      {
+        "id": "github_agent",
+        "type": "Agent",
+        "label": "GitHub Integration Agent",
+        "nodeCategory": "agent",
+        "agent_id": "6998ddbc8d370e1a6cc0ba7a"
+      },
+      {
+        "id": "output_node",
+        "type": "Output",
+        "label": "Integration Output",
+        "nodeCategory": "end"
+      }
+    ],
+    "edges": [
+      { "source": "input_node", "target": "manager_agent" },
+      { "source": "manager_agent", "target": "code_gen_agent" },
+      { "source": "manager_agent", "target": "security_agent" },
+      { "source": "manager_agent", "target": "docs_agent" },
+      { "source": "manager_agent", "target": "output_node" },
+      { "source": "input_node", "target": "github_agent" },
+      { "source": "github_agent", "target": "output_node" }
+    ]
+  },
+  "agents": {
+    "code_gen_agent": {
+      "agent_id": "6998dd787375d37e0e134d11",
+      "name": "Code Generation Agent",
+      "role": "Expert API Integration Code Generator",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "temperature": 0.4,
+      "top_p": 0.95,
+      "type": "sub-agent",
+      "parent": "manager_agent",
+      "tools": [],
+      "capabilities": ["text"]
+    },
+    "security_agent": {
+      "agent_id": "6998dd7847a42b7319aead91",
+      "name": "Error & Security Analyzer Agent",
+      "role": "API Security and Error Analysis Expert",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5",
+      "temperature": 0.2,
+      "top_p": 1,
+      "type": "sub-agent",
+      "parent": "manager_agent",
+      "tools": [],
+      "capabilities": ["text"]
+    },
+    "docs_agent": {
+      "agent_id": "6998dd796b8b4ea65c4928c6",
+      "name": "Documentation Agent",
+      "role": "API Documentation and Research Specialist",
+      "provider": "perplexity",
+      "model": "sonar-pro",
+      "temperature": 0.3,
+      "top_p": 1,
+      "type": "sub-agent",
+      "parent": "manager_agent",
+      "tools": [],
+      "capabilities": ["text", "web_search"]
+    },
+    "manager_agent": {
+      "agent_id": "6998dda44657541456743cb6",
+      "name": "Integration Orchestrator",
+      "role": "Integration Workflow Orchestrator and Manager",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "temperature": 0.3,
+      "top_p": 1,
+      "type": "manager",
+      "managed_agents": [
+        "6998dd787375d37e0e134d11",
+        "6998dd7847a42b7319aead91",
+        "6998dd796b8b4ea65c4928c6"
+      ],
+      "tools": [],
+      "capabilities": ["text"]
+    },
+    "github_agent": {
+      "agent_id": "6998ddbc8d370e1a6cc0ba7a",
+      "name": "GitHub Integration Agent",
+      "role": "GitHub Automation and CI/CD Integration Specialist",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "temperature": 0.2,
+      "top_p": 1,
+      "type": "independent",
+      "tools": ["GITHUB_CREATE_AN_ISSUE", "GITHUB_CREATE_AN_ISSUE_COMMENT", "GITHUB_CREATE_A_PULL_REQUEST"],
+      "capabilities": ["text", "github"]
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "agent_name": "Integration Orchestrator",
+  "agent_id": "6998dda44657541456743cb6",
+  "description": "Coordinates sub-agents to generate integration code, perform error/security analysis, and produce documentation from a single API specification input. Routes the spec to each sub-agent and aggregates all outputs into a unified review.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "result": {
+      "code_output": {
+        "code_snippets": [
+          {
+            "language": "string",
+            "code": "string",
+            "filename": "string",
+            "description": "string"
+          }
+        ],
+        "dependencies": [
+          {
+            "language": "string",
+            "packages": [
+              "string"
+            ]
+          }
+        ],
+        "usage_notes": "string",
+        "authentication_type": "string"
+      },
+      "security_output": {
+        "findings": [
+          {
+            "id": "string",
+            "severity": "string",
+            "category": "string",
+            "title": "string",
+            "description": "string",
+            "remediation": "string",
+            "evidence": "string"
+          }
+        ],
+        "risk_score": "string",
+        "alert_rules": [
+          {
+            "name": "string",
+            "condition": "string",
+            "severity": "string",
+            "action": "string"
+          }
+        ],
+        "summary": "string"
+      },
+      "documentation_output": {
+        "documentation": "string",
+        "endpoints": [
+          {
+            "method": "string",
+            "path": "string",
+            "description": "string",
+            "parameters": "string",
+            "response_schema": "string"
+          }
+        ],
+        "getting_started": "string",
+        "changelog_entry": "string",
+        "troubleshooting": "string"
+      },
+      "integration_summary": "string",
+      "readiness_assessment": "string"
+    }
+  },
+  "example_response": {
+    "result": {
+      "code_output": {
+        "code_snippets": [
+          {
+            "language": "sample string",
+            "code": "sample string",
+            "filename": "sample string",
+            "description": "sample string"
+          }
+        ],
+        "dependencies": [
+          {
+            "language": "sample string",
+            "packages": [
+              "sample string"
+            ]
+          }
+        ],
+        "usage_notes": "sample string",
+        "authentication_type": "sample string"
+      },
+      "security_output": {
+        "findings": [
+          {
+            "id": "sample string",
+            "severity": "sample string",
+            "category": "sample string",
+            "title": "sample string",
+            "description": "sample string",
+            "remediation": "sample string",
+            "evidence": "sample string"
+          }
+        ],
+        "risk_score": "sample string",
+        "alert_rules": [
+          {
+            "name": "sample string",
+            "condition": "sample string",
+            "severity": "sample string",
+            "action": "sample string"
+          }
+        ],
+        "summary": "sample string"
+      },
+      "documentation_output": {
+        "documentation": "sample string",
+        "endpoints": [
+          {
+            "method": "sample string",
+            "path": "sample string",
+            "description": "sample string",
+            "parameters": "sample string",
+            "response_schema": "sample string"
+          }
+        ],
+        "getting_started": "sample string",
+        "changelog_entry": "sample string",
+        "troubleshooting": "sample string"
+      },
+      "integration_summary": "sample string",
+      "readiness_assessment": "sample string"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "agent_ids": {
+    "code_gen_agent": "6998dd787375d37e0e134d11",
+    "security_agent": "6998dd7847a42b7319aead91",
+    "docs_agent": "6998dd796b8b4ea65c4928c6",
+    "manager_agent": "6998dda44657541456743cb6",
+    "github_agent": "6998ddbc8d370e1a6cc0ba7a"
+  },
+  "agent_details": {
+    "6998dd787375d37e0e134d11": {
+      "name": "Code Generation Agent",
+      "type": "sub-agent",
+      "provider": "openai",
+      "model": "gpt-4.1"
+    },
+    "6998dd7847a42b7319aead91": {
+      "name": "Error & Security Analyzer Agent",
+      "type": "sub-agent",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5"
+    },
+    "6998dd796b8b4ea65c4928c6": {
+      "name": "Documentation Agent",
+      "type": "sub-agent",
+      "provider": "perplexity",
+      "model": "sonar-pro"
+    },
+    "6998dda44657541456743cb6": {
+      "name": "Integration Orchestrator",
+      "type": "manager",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "managed_agents": [
+        "6998dd787375d37e0e134d11",
+        "6998dd7847a42b7319aead91",
+        "6998dd796b8b4ea65c4928c6"
+      ]
+    },
+    "6998ddbc8d370e1a6cc0ba7a": {
+      "name": "GitHub Integration Agent",
+      "type": "independent",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "tools": ["GITHUB_CREATE_AN_ISSUE", "GITHUB_CREATE_AN_ISSUE_COMMENT", "GITHUB_CREATE_A_PULL_REQUEST"]
+    }
+  },
+  "response_schemas": {
+    "code_gen_agent": "response_schemas/code_generation_agent_response.json",
+    "security_agent": "response_schemas/error_security_analyzer_agent_response.json",
+    "docs_agent": "response_schemas/documentation_agent_response.json",
+    "manager_agent": "response_schemas/integration_orchestrator_response.json",
+    "github_agent": "response_schemas/github_integration_agent_response.json"
+  }
+}

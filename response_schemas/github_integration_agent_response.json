@@ -1,0 +1,76 @@
+{
+  "agent_name": "GitHub Integration Agent",
+  "agent_id": "6998ddbc8d370e1a6cc0ba7a",
+  "description": "Pushes approved integration code, documentation, and failure alert configurations to the developer's GitHub repository. Creates issues for flagged security/error findings, commits code files, and updates README or docs.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "result": {
+      "actions_taken": [
+        {
+          "type": "string",
+          "description": "string",
+          "url": "string",
+          "status": "string"
+        }
+      ],
+      "issues_created": [
+        {
+          "title": "string",
+          "number": "number",
+          "url": "string",
+          "severity": "string"
+        }
+      ],
+      "pull_request": {
+        "title": "string",
+        "url": "string",
+        "branch": "string",
+        "files_changed": "number"
+      },
+      "summary": "string",
+      "errors": [
+        "string"
+      ]
+    }
+  },
+  "example_response": {
+    "result": {
+      "actions_taken": [
+        {
+          "type": "sample string",
+          "description": "sample string",
+          "url": "sample string",
+          "status": "sample string"
+        }
+      ],
+      "issues_created": [
+        {
+          "title": "sample string",
+          "number": 0,
+          "url": "sample string",
+          "severity": "sample string"
+        }
+      ],
+      "pull_request": {
+        "title": "sample string",
+        "url": "sample string",
+        "branch": "sample string",
+        "files_changed": 0
+      },
+      "summary": "sample string",
+      "errors": [
+        "sample string"
+      ]
+    }
+  },
+  "has_module_outputs": true,
+  "module_outputs_example": {
+    "artifact_files": [
+      {
+        "file_url": "https://example.com/file.pdf"
+      }
+    ]
+  }
+}
